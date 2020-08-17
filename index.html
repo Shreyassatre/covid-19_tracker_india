@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Covid 19 india tarcker</title>
+    <link rel="icon" href="corona.png" type="image/png" sizes="16x16">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+<body onload="fetch()" >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="index.html"><h3>C<span><img src="corona.png" width="30px" height="30px" alt="" style="padding-bottom:5px;"></span>vid-19 India Tracker</h3></a>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#analytics">Analytics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutcovid.html">What is COVID-19</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="prevention.html">Prevention</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+
+    <div class="container my-5 updates">
+        <h1 class="text-center mb-5 text-danger">Covid-19 Cases In India</h1>
+        <div class="row text-center count-style ">
+            <div class="col-lg-3 col-md-5 col-sm-12 mx-auto text-center text-warning m-3 con">
+                <h3>Confirmed</h3>
+                <p id="new_con">+ </p>
+                <h5 id="confirmed"></h5>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-12 mx-auto text-info m-3 act">
+                <h3>Active</h3>
+                <br>
+                <h5 id="active"></h5>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-12 mx-auto text-success m-3 rec">
+                <h3>Recovered</h3>
+                <p id="new_rec">+ </p>
+                <h5 id="recovered"></h5>
+            </div>
+            <div class="col-lg-3 col-md-5 col-sm-12 mx-auto text-danger m-3 deaths">
+                <h3>Deceased</h3>
+                <p id="new_deaths">+ </p>
+                <h5 id="deaths"></h5>
+            </div>
+            
+        </div>
+    </div>
+    <div class="container my-5 tbl">
+        <section class="corona_update container-fluid tbl_h">
+            <div class="mb-3 mt-5">
+                <h1 class="text-center text-capitalize">covid-19 cases - statewise</h1>
+            </div>
+        
+            <div class="table-responsive text-center tbl_act container-fluid">
+        
+                <table class="table-bordered table-striped text-center container-fluid" id="tbval">
+                <tr>
+                    <th>Country</th>
+                    <th>Total Confirmed</th>
+                    <th>Total Active</th>
+                    <th>Total Recovered</th>
+                    <th>Total Deaths</th>
+                    <th>New Confirmed</th>
+                    <th>New Recovered</th>
+                    <th>New Deaths</th>
+                    <th>Last Update</th>
+                </tr>
+                </table>
+        
+            </div>
+        </section>
+    </div>
+<section class="pb-3" id="analytics">
+    <div class="text-center">
+        <h1 class="border-bottom">Analytics</h1>
+    </div>
+
+    <div class="container my-5"></div>
+        <div class="container conChart">
+            <h2 class="text-warning text-center">Confirmed Cases</h2>
+            <canvas id="conChart"></canvas>
+        </div>
+        <div class="container actChart">
+            <h2 class="text-info text-center">Active Cases</h2>
+            <canvas id="actChart"></canvas>
+        </div>
+        <div class="container recChart">
+            <h2 class="text-success text-center">Recovered Cases</h2>
+            <canvas id="recChart"></canvas>
+        </div>
+        <div class="container deathsChart">
+            <h2 class="text-danger text-center">Deceased Cases</h2>
+            <canvas id="deathsChart"></canvas>
+        </div>
+    </div>
+</section>
+    <!-- Footer -->
+<section class="page-footer font-small stylish-color-dark pt-4 bg-light mt-3" id="contact">
+        <div class="container text-center text-md-left">
+            <div class="row">
+              <div class="col-lg-3 col-md-4 col-sm-12 mx-auto">
+                <h3 class="mt-3 mb-4">About</h3>
+                <p>I am Shreyas Stare. I am a full stack web developer from mumbai,India.</p>                
+              </div>
+
+              <hr class="clearfix w-100 d-md-none">
+
+                <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                    <h3>Address</h3>
+                    <div class="content">
+                        <div class="place">
+                            <span class="fas fa-map-marker-alt"></span>
+                            <span class="text">Chunabhatti, Mumbai</span>
+                        </div>
+                        <div class="phone">
+                            <span class="fas fa-phone-alt"></span>
+                            <span class="text">+91-9930040655</span>
+                        </div>
+                        <div class="email">
+                            <span class="fas fa-envelope"></span>
+                            <span class="text">satreshreyas@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+              <hr class="clearfix w-100 d-lg-none">
+
+              <div class="col-lg-5 col-md-6 col-sm-12 mx-auto">
+                  <h3>Contact Us</h3>
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-lg-5 col-md-12 col-sm-12 col-12">
+                            <label class="mr-auto">Name :</label>
+                            <input type="text" class="form-control" placeholder="Name">
+                        </div>
+                        <div class="form-group col-lg-5 col-md-12 col-sm-12 col-12">
+                            <label class="mr-auto">Email :</label>
+                            <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <label class="mr-auto">Your Message :</label>
+                    <textarea class="form-control" placeholder="Message..." id="" cols="-1" rows="5"></textarea>
+                </form>
+              </div>
+        
+            </div>
+        </div>    
+        
+        <hr class="clearfix w-100" >
+
+            <div class="list-unstyled list-inline text-center social mt-lg-4 mt-md-3 mt-sm-0">
+                <b class=" w-100 text-center">Follow me on : </b><br>
+                <a href="https://www.facebook.com/shreyas.satre.90"><span class="fab fa-facebook-f"></span></a>
+                <a href="https://www.instagram.com/shreyas_satre/?hl=en"><span class="fab fa-instagram"></span></a>
+                <a href="https://www.linkedin.com/in/shreyas-satre-7b10811a4/"><span class="fab fa-linkedin"></span></a>
+            </div>
+        
+        <hr class="clearfix w-100">
+        
+          <div class="text-center py-3">
+            <p>Created & Designed By Shreyas Sanjay Satre.</p>
+          </div>
+        
+        </section>
+</body>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script src="script.js"></script>
+</html>
